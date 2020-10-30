@@ -4,12 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jacalix</title>
-    <link href="css/style.css" type="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <header>
+        <div>
+            <h1>JACALIX</h1>
+        </div>
         
     </header>
+    <div class="logsign">
+        <div class="log">
+            <div>
+                <p>Log In</p>
+                
+            </div>
+            <div class="formLog">
+                <label>Nombre: <input id="logName" type="text" placeholder="Introduce tu nombre"></label>
+                <button id="login">Entrar</button>
+            </div>
+        </div>
+        <hr>
+        <div class="sign">
+            <div>
+                <p>Sign Up</p>
+            </div>
+            <div class="formSign">
+                <label>Nombre: <input id="signName" type="text" placeholder="Introduce tu nombre"></label>
+                <label>Apellidos: <input id="signSurname"type="text" placeholder="Introduce tus apellidos"> </label>
+                <label>Edad: <input id="signAge"type="text" placeholder="Introduce tu edad"> </label>
+                <label>Dni: <input id="signDni"type="text" placeholder="Introduce tu dni"></label>
+                <button id="signup">Registrarse</button>
+            </div>
+            
+        </div>
+    </div>
     <script src="js/script.js"></script>
 </body>
 </html>
