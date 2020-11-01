@@ -4,41 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jacalix</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <header>
-        <div>
-            <h1>JACALIX</h1>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="index.html"><h1>JACALIX</h1></a>
+            </nav>
         </div>
-        
     </header>
-    <div class="logsign">
-        <div class="log">
-            <div>
-                <p>Log In</p>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col -sm">
+                <div class="column">
+                    <div class="col-sm-6">
+                        <h3>Log In</h3>
+                        
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Username</label>
+                                <input type="text" class="form-control" id="logName" aria-describedby="emailHelp">
+                            </div>
+                            <button id="logButton" class="btn btn-primary">Submit</button>
+                        
+                    </div>
+                </div>
                 
             </div>
-            <div class="formLog">
-                <label>Nombre: <input id="logName" type="text" placeholder="Introduce tu nombre"></label>
-                <button id="login">Entrar</button>
+            <div class="col-sm">
+                <h3>Sign Up</h3>
+                
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" class="form-control" id="signName" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Surname</label>
+                        <input type="text" class="form-control" id="signSurname" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Age</label>
+                        <input type="text" class="form-control" id="signAge" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Dni</label>
+                        <input type="text" class="form-control" id="signDni" aria-describedby="emailHelp">
+                    </div>
+                    <button id="signButton" class="btn btn-primary">Submit</button>
+                
             </div>
         </div>
-        <hr>
-        <div class="sign">
-            <div>
-                <p>Sign Up</p>
-            </div>
-            <div class="formSign">
-                <label>Nombre: <input id="signName" type="text" placeholder="Introduce tu nombre"></label>
-                <label>Apellidos: <input id="signSurname"type="text" placeholder="Introduce tus apellidos"> </label>
-                <label>Edad: <input id="signAge"type="text" placeholder="Introduce tu edad"> </label>
-                <label>Dni: <input id="signDni"type="text" placeholder="Introduce tu dni"></label>
-                <button id="signup">Registrarse</button>
-            </div>
-            
-        </div>
+        
     </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
