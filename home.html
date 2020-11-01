@@ -33,7 +33,7 @@
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">Edit Profile</button>
             </div>
             <div class="col">
-                <h3>Continue seeing</h3>
+                <h3>My Products</h3>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Cras justo odio</li>
                     <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -42,14 +42,10 @@
                     <li class="list-group-item">Vestibulum at eros</li>
                 </ul>
             </div>
-            <div class="col">
-                <h3>My Products</h3>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+            <div id="colViews"class="col">
+                <h3>Continue seeing</h3>
+                <ul id ="viewsList"class="list-group list-group-flush">
+                    
                 </ul>
             </div>
         </div>
@@ -64,34 +60,35 @@
                     </button>
             </div>
             <div class="modal-body">
-                <form>
+                
                     <div class="form-group">
                         <label for="exampleInputEmail1">Username</label>
-                        <input type="text" class="form-control" id="signName" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="editName" aria-describedby="emailHelp">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Surname</label>
-                        <input type="text" class="form-control" id="signSurname" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="editSurname" aria-describedby="emailHelp">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Age</label>
-                        <input type="text" class="form-control" id="signAge" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="editAge" aria-describedby="emailHelp">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Dni</label>
-                        <input type="text" class="form-control" id="signDni" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="editDni" aria-describedby="emailHelp">
                     </div>
                     <label for="exampleInputEmail1">Subscription</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>GOLD</option>
-                        <option>ADVANCED</option>
-                        <option>BASIC</option>
+                    <select translate="no" class="form-control notranslate" id="editSubscription">
+                        <option class="notranslate">GOLD</option>
+                        <option class="notranslate" >ADVANCED</option>
+                        <option class="notranslate">BASIC</option>
                     </select>
-                </form>
+                    
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button id="editProfileButton"type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
         </div>
