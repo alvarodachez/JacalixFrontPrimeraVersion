@@ -1,6 +1,7 @@
 const signButton = document.getElementById("signButton");
 const logButton = document.getElementById("logButton");
 const editProfileButton = document.getElementById("editProfileButton");
+const viewChooseButton = document.getElementById("viewChooseButton");
 let userActive;
 let views;
 
@@ -16,6 +17,41 @@ const completeProfileRequest = () =>{
     //.then(res => console.log(res))
     .then(res => completeProfile(res))
     
+}
+const completeMyProductsRequest = ()=>{
+    fetch(`http://localhost:8080/jacalix/customers/products/${userActive}`)
+    .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
+    .then(res => res.json())
+    .then(res => completeMyProducts(res))
+}
+const completeMyProducts = (res) =>{
+    let paren = document.getElementById("colMyProducts");
+    let parenView = document.getElementById("viewModalCol");
+    let oldViewSelect = document.getElementById("viewSelect");
+    let newViewSelect = document.createElement("select");
+    newViewSelect.setAttribute("id","viewSelect");
+    newViewSelect.setAttribute("class","form-control notranslate")
+    let myProductsList = document.getElementById("myProductsList");
+    let newMyProductsList = document.createElement("ul");
+    newMyProductsList.setAttribute("class","list-group list-group-flush");
+
+    if(res!= []){
+        for(i of res){
+            let elemento = document.createElement("li");
+            elemento.setAttribute("class","list-group-item notranslate");
+            let texto = document.createTextNode("Name: "+i.name+" | Category: "+i.cat+" | Subscription: "+i.rent);
+            elemento.appendChild(texto);
+            newMyProductsList.appendChild(elemento);
+            let opcion = document.createElement("option");
+            opcion.setAttribute("class","notranslate");
+            let textoOpcion = document.createTextNode(i.name);
+            opcion.appendChild(textoOpcion);
+            newViewSelect.appendChild(opcion);
+        }
+        paren.replaceChild(newMyProductsList,myProductsList);
+        parenView.replaceChild(newViewSelect,oldViewSelect);
+
+    }
 }
 const reHome = (name) =>{
     sessionStorage.setItem('nameActive',name);
@@ -57,6 +93,7 @@ const completeProfile = (res) =>{
     profileDni.innerText = "Dni: " + res.dni;
     profileSubscription.innerText = "Subscription: "+ res.sub.rentType;
     completeViews(views);
+    completeMyProductsRequest();
 }
 if(document.location == 'file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersion/home.html'){
     completeProfileRequest();
@@ -105,6 +142,22 @@ if(document.location == 'file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersi
 
         location.reload();
     })
+    viewChooseButton.addEventListener("click", ()=>{
+        let select = document.getElementById("viewSelect").value;
+
+        fetch(`http://localhost:8080/jacalix/customers/viewName/${userActive}&&${select}`,{
+            method:'PUT',
+           // body: JSON.stringify(),
+            headers: {
+                "Content-Type":"application/json"
+            }
+        })
+        .then(response => response.json())
+
+        location.reload();
+    })
+
+
 }
 if(document.location == 'file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersion/index.html'){
 
