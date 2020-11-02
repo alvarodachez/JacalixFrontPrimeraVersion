@@ -164,7 +164,7 @@ if(document.location == "file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersi
 
 
 }
-console.log(document.location)
+console.log(window.location)
 if(document.location == "file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersion/index.html"){
 
     let eventoLog =   logButton.addEventListener("click", () =>{
