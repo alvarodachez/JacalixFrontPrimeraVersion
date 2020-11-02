@@ -2,8 +2,10 @@ const signButton = document.getElementById("signButton");
 const logButton = document.getElementById("logButton");
 const editProfileButton = document.getElementById("editProfileButton");
 const viewChooseButton = document.getElementById("viewChooseButton");
+
 let userActive;
 let views;
+
 
 
 const completeProfileRequest = () =>{
@@ -55,7 +57,9 @@ const completeMyProducts = (res) =>{
 }
 const reHome = (name) =>{
     sessionStorage.setItem('nameActive',name);
+    
     window.open("home.html","_self");
+    
 }
 const completeViews = (v) =>{
     let paren = document.getElementById("colViews");
@@ -95,8 +99,9 @@ const completeProfile = (res) =>{
     completeViews(views);
     completeMyProductsRequest();
 }
-if(document.location == 'file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersion/home.html'){
+if(document.location == "file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersion/home.html"){
     completeProfileRequest();
+
 
     editProfileButton.addEventListener("click", () => {
         let editName = document.getElementById("editName").value;
@@ -159,7 +164,8 @@ if(document.location == 'file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersi
 
 
 }
-if(document.location == 'file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersion/index.html'){
+console.log(document.location)
+if(document.location == "file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersion/index.html"){
 
     let eventoLog =   logButton.addEventListener("click", () =>{
         let logName = document.getElementById("logName").value;
