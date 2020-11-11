@@ -2,16 +2,80 @@ const signButton = document.getElementById("signButton");
 const logButton = document.getElementById("logButton");
 const editProfileButton = document.getElementById("editProfileButton");
 const viewChooseButton = document.getElementById("viewChooseButton");
+const windowStay = document.getElementsByTagName("title");
 
 let userActive;
 let views;
 
+const imageProductRequest = (productId) =>{
 
+    fetch(`http://localhost:8080/jacalix/products/doc/download/${productId}`)
+    .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
+    .then(res => res.json())
+    .then(res => console.log(res))
+    //.then(res => completeProducts(res))
+}
+const completeProductsRequest = () =>{
 
+    fetch(`http://localhost:8080/jacalix/products`)
+    .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
+    .then(res => res.json())
+    //.then(res => console.log(res))
+    .then(res => completeProducts(res))
+
+}
+const completeProducts = (res) =>{
+
+    let productContainer = document.getElementById("productContainer");
+
+    for (p of res){
+        let singleContainer = document.createElement("div");
+        singleContainer.setAttribute("class","col -sm");
+
+        let card = document.createElement("div");
+        card.setAttribute("class","card");
+        card.style.width = "18rem";
+
+        let image = document.createElement("img");
+        image.setAttribute("src","img/vikingosIcono.jpg")
+        image.setAttribute("class","card-img-top")
+        image.setAttribute("alt","...")
+
+        let bodyCard = document.createElement("div");
+        bodyCard.setAttribute("class","card-body");
+
+        let titleCard = document.createElement("h5");
+        titleCard.setAttribute("class","card-title notranslate");
+        let titleText = document.createTextNode(p.name);
+        titleCard.appendChild(titleText);
+
+        let descriptionCard = document.createElement("p");
+        descriptionCard.setAttribute("class","card-text notranslate");
+        let descriptionText = document.createTextNode(p.description);
+        descriptionCard.appendChild(descriptionText);
+
+        let linkCard = document.createElement("a");
+        linkCard.setAttribute("class","btn btn-primary");
+        linkCard.setAttribute("href","#");
+        let linkText = document.createTextNode("See Product");
+        linkCard.appendChild(linkText);
+
+        bodyCard.appendChild(titleCard);
+        bodyCard.appendChild(descriptionCard);
+        bodyCard.appendChild(linkCard);
+
+        card.appendChild(image);
+        card.appendChild(bodyCard);
+
+        singleContainer.appendChild(card);
+
+        productContainer.appendChild(singleContainer);
+    }
+}
 const completeProfileRequest = () =>{
 
     let nameToEnter = sessionStorage.getItem('nameActive');
-    console.log(nameToEnter);
+    //console.log(nameToEnter);
     
     fetch(`http://localhost:8080/jacalix/customers/${nameToEnter}`)
     .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
@@ -99,9 +163,13 @@ const completeProfile = (res) =>{
     completeViews(views);
     completeMyProductsRequest();
 }
-if(document.location == "file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersion/home.html"){
-    completeProfileRequest();
+if(windowStay[0].innerHTML == "Jacalix | Productos"){
 
+    completeProductsRequest();
+}
+if(windowStay[0].innerHTML == "Jacalix | Mi Cuenta"){
+    completeProfileRequest();
+    
 
     editProfileButton.addEventListener("click", () => {
         let editName = document.getElementById("editName").value;
@@ -165,7 +233,7 @@ if(document.location == "file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersi
 
 }
 
-if(document.location == "file:///home/alvaro/Escritorio/JacalixFrontPrimeraVersion/index.html"){
+if(windowStay[0].innerHTML == "Jacalix"){
 
     let eventoLog =   logButton.addEventListener("click", () =>{
         let logName = document.getElementById("logName").value;
