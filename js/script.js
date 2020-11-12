@@ -3,18 +3,13 @@ const logButton = document.getElementById("logButton");
 const editProfileButton = document.getElementById("editProfileButton");
 const viewChooseButton = document.getElementById("viewChooseButton");
 const windowStay = document.getElementsByTagName("title");
+let objectURLGlobal;
 
 let userActive;
 let views;
 
-const imageProductRequest = (productId) =>{
 
-    fetch(`http://localhost:8080/jacalix/products/doc/download/${productId}`)
-    .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
-    .then(res => res.json())
-    .then(res => console.log(res))
-    //.then(res => completeProducts(res))
-}
+
 const completeProductsRequest = () =>{
 
     fetch(`http://localhost:8080/jacalix/products`)
@@ -37,7 +32,14 @@ const completeProducts = (res) =>{
         card.style.width = "18rem";
 
         let image = document.createElement("img");
-        image.setAttribute("src","img/vikingosIcono.jpg")
+        
+        //imageProductRequest(p.id);
+        fetch(`http://localhost:8080/jacalix/products/doc/download/${p.id}`)
+        .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
+        .then(res => res.blob())
+        .then(res => {image.src = URL.createObjectURL(res)})
+
+        //image.src = sessionStorage.getItem("global");
         image.setAttribute("class","card-img-top")
         image.setAttribute("alt","...")
 
@@ -166,6 +168,7 @@ const completeProfile = (res) =>{
 if(windowStay[0].innerHTML == "Jacalix | Productos"){
 
     completeProductsRequest();
+    imageProductRequest(1)
 }
 if(windowStay[0].innerHTML == "Jacalix | Mi Cuenta"){
     completeProfileRequest();
